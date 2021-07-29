@@ -1,0 +1,38 @@
+{
+    "name": "chrome-remote-debugger-client",
+    "version": "0.1.0",
+    "description": "The Chrome Remote Debugger client for Page.",
+    "main": "dist/crd.cjs.min.js",
+    "module": "dist/crd.esm.min.js",
+    "author": "mnichangxin@163.com",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mnichangxin/chrome-remote-debugger-client.git"
+    },
+    "scripts": {
+        "clean": "rimraf -rf dist",
+        "build:dev": "npm run clean && rollup --config scripts/build.dev.js",
+        "build:prod": "npm run clean && rollup --config scripts/build.prod.js",
+        "build": "npm run clean && rollup --config scripts/build.dev.js && rollup --config scripts/build.prod.js"
+    },
+    "dependencies": {
+        "@mnichangxin/chobitsu": "^0.1.0",
+        "socket.io-client": "^4.1.3",
+        "xhr": "^2.6.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.14.6",
+        "@babel/plugin-proposal-class-properties": "^7.13.0",
+        "@babel/plugin-syntax-class-properties": "^7.12.13",
+        "@babel/plugin-transform-runtime": "^7.14.5",
+        "@babel/preset-env": "^7.13.15",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^19.0.1",
+        "@rollup/plugin-node-resolve": "^13.0.2",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.53.2",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "rollup-plugin-terser": "^7.0.2"
+    }
+}

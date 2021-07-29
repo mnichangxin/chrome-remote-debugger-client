@@ -5,7 +5,7 @@ import babel from '@rollup/plugin-babel'
 import { version } from '../package.json'
 
 const defaultOption = {
-    input: 'client/index',
+    input: 'lib/index',
     output: {
         banner: `/* chrome-remote-debugger version ${version} */`
     },
@@ -19,7 +19,11 @@ const defaultOption = {
             exclude: 'node_modules/**',
             babelHelpers: 'runtime'
         })
-    ]
+    ],
+    onwarn(warning, warn) {
+        if (warning.code === 'EVAL') return
+        warn(warning)
+    }
 }
 
 const outputList = [
@@ -41,9 +45,7 @@ const outputList = [
 
 export default outputList.map(output => {
     const isUMDMode = output.format === 'umd'
-    const external = isUMDMode
-        ? []
-        : ['socket.io-client', 'xhr', 'nanoid', 'chobitsu']
+    const external = isUMDMode ? [] : ['socket.io-client', 'xhr', 'chobitsu']
     let globals = {}
     if (!isUMDMode) {
         external.forEach(key => (globals[key] = key))
