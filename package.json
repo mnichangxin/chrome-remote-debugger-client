@@ -4,6 +4,7 @@
     "description": "The Chrome Remote Debugger client for Page.",
     "main": "dist/crd.cjs.min.js",
     "module": "dist/crd.esm.min.js",
+    "types": "types/index.d.ts",
     "author": "mnichangxin@163.com",
     "license": "MIT",
     "repository": {
